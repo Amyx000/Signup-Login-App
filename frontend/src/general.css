@@ -1,0 +1,44 @@
+.nav{
+
+    text-align: right;
+    color: white;
+}
+
+
+
+.inner-contain1, .inner-contain2{
+    margin-right: 20px;
+    transition: all 0.7s;
+}
+
+.inner-contain1{
+    font-size: 20px;
+
+}
+.loginbtn{
+    text-decoration: none;
+    color: white;
+}
+
+.inner-contain2{
+    border: 2px solid white;
+    border-radius: 8px;
+    
+}
+
+.inner-contain2:hover{
+    border-radius: 8px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: all 0.7s;
+}
+
+.inner-contain2:active{
+    background-color: black;
+    color: white;
+}
+
+h1{
+    color:white
+}
