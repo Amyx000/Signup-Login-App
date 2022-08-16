@@ -6,15 +6,17 @@ import "./general.css"
 
 function Nav (){
 
+   
     const Logoutuser = ()=>{
         localStorage.clear();
-        
+    
     }
+    
 
     return (
         <>
         <div className="nav">
-        <h2 className="head-name"><span className="inner-contain1">Hello, User</span>
+        <h2 className="head-name"><span className="inner-contain1">Hello</span>
         
         <Routes>
         <Route path="/" element={<Link className="loginbtn" to="/login"><span className="inner-contain2">Log In</span></Link>}/>

@@ -3,10 +3,8 @@ const cors = require("cors")
 require ("./config")
 const Modelfile = require("./schemamodel")
 const app = express();
-app.use(express.json({
-    type: ['application/json', 'text/plain']
-  }))
-app.use(cors());
+app.use(express.json())
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
 app.post("/register",async (req, res)=>{
     const {name: inputname, email: inputemail, password: inputpass}=req.body;
@@ -26,12 +24,11 @@ app.post("/register",async (req, res)=>{
 app.post("/login", async (req, res)=>{
     const {email: inputemail, password: inputpass}=req.body;
     console.log(inputemail);
-    // res.send();
-    
-    // const logindatacheck = await Modelfile.findOne({email: inputemail});
+   
     if (await Modelfile.findOne({email: inputemail}) && await Modelfile.findOne({password: inputpass})){
         res.status(200).end();
         console.log(await Modelfile.findOne({email: inputemail}));
+        
         
     }
     else if (await Modelfile.findOne({email: inputemail}) || await Modelfile.findOne({password: inputpass}))
@@ -51,5 +48,14 @@ app.post("/login", async (req, res)=>{
 });
 
 
+app.get("/data", (req, res)=>{
+    Modelfile.find({}, function(err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.json(result);
+        }
+      });
+})
 
 app.listen(5000);

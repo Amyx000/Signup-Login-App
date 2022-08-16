@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import axios from "axios"
 import { Link } from "react-router-dom"
 import{useNavigate} from "react-router-dom"
 import "./form.css"
@@ -13,14 +14,11 @@ function Login (){
         if (email==="" || password===""){alert("please fill the form completely")}
         else{
             console.log(email, password)
-           const result = await fetch('http://localhost:5000/login',{
-                method:"post",
-                body:JSON.stringify({email, password}),
-                Headers:{
-                    'Content-Type':'application/json'
-                }
+           const result = await axios.post('http://localhost:5000/login',{
+            email:email,
+            password:password
+          },{credentials: "include"})
 
-            });
 
             
 
